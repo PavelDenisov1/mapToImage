@@ -49,3 +49,19 @@ export function initMapOnDoc(map: Map){
         mainContent.appendChild(div);
     }
 }
+
+export function downloadBase64Image(base64String, fileName) {
+    if(base64String !== ''){
+        const a = document.createElement('a');
+        a.href = base64String;
+        a.download = fileName;
+
+        const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: false
+        });
+
+        a.dispatchEvent(clickEvent);
+    }
+}
